@@ -6,7 +6,10 @@ const Counter = () => {
     <h3>카운터</h3>
     <div> 클릭한 회수 : {count}</div>
     <button onClick={() => {setCount(count + 1)}}>
-      클릭버튼
+      +
+    </button>
+    <button onClick={() => {setCount(count - 1)}}>
+      -
     </button>
   </>)
 }
