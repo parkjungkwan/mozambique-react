@@ -21,7 +21,13 @@ const TodoList = () => {
             <td>등록된 할 일이 없습니다</td>  
         </tr>)}
         {todos.length !== 0 && todos.map( todo => (<tr key={todo.id}>
-            <td>{todo.name}</td>   
+            <td><input type="checkbox" checked={todo.complete} 
+            onChange={toggleTodo.bind(null, todo.id)}/>{ todo.complete 
+                        ? <span style={{textDecoration: "line-through"}}>{todo.name}</span> 
+                        : <span>{todo.name}</span>}
+
+                <button onClick={deleteTodo.bind(null, todo.id)}>X</button>            
+            </td>   
         </tr>))} 
     </tbody>
     </table>
