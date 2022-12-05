@@ -1,6 +1,9 @@
 const initialState = {todos: [], todo: {}}
 
 export const addTodoAction = todo => ({type: "ADD_TODO", payload: todo})
+export const toggleTodoAction = todoId => ({type: "TOGGLE_TODE", payload: todoId})
+export const deleteTodoAction = todoId => ({type: "DELETE_TODE", payload: todoId}) 
+
 
 const todoReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -11,7 +14,7 @@ const todoReducer = (state = initialState, action) => {
             todo => (todo.id === action.payload) ? {...todo, complete: !todo.complete} 
                                                 : todo)}
       case 'DELETE_TODE':
-        return {...state, todos: []}
+        return {...state, todos: state.todos.filter(todo => todo.id !== action.payload)}
       default:
         return state
     }
