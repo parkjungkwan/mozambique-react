@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
-import {Navigation, Counter, TodoInput, Footer} from "../components"
+import {Navigation, Counter, Footer} from "../components"
+import {Schedule} from "../containers"
 const Home = () => {
     return (<>
     <table style={{ width: "1200px", height: "550px", margin: "0 auto", border: "1px solid black"}}>
@@ -15,7 +16,7 @@ const Home = () => {
             <td style={{ width: "100%", border: "1px solid black"}}>
             <Routes>
                 <Route path="/counter" element={<Counter/>}></Route>
-                <Route path="/todos/*" element={<TodoInput/>}></Route>
+                <Route path="/todos" element={<Schedule/>}></Route>
             </Routes>
             </td>
         </tr>
