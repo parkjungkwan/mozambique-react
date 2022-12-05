@@ -20,9 +20,9 @@ const TodoList = () => {
         {todos.length === 0 && (<tr>
             <td>등록된 할 일이 없습니다</td>  
         </tr>)}
-        {todos.length !== 0 && (<tr>
-            <td>등록된 할 일이 있습니다</td>   
-        </tr>)} 
+        {todos.length !== 0 && todos.map( todo => (<tr key={todo.id}>
+            <td>{todo.name}</td>   
+        </tr>))} 
     </tbody>
     </table>
     </>)
