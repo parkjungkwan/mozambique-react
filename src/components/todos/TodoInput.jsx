@@ -13,7 +13,7 @@ const TodoInput = () => {
            name : todo,
            complete : false 
         }
-        addTodo(new newTodo)
+        addTodo(newTodo)
         setTodo('')
     }
     const addTodo = todo => dispatch(addTodoAction(todo))
