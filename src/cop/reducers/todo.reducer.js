@@ -23,26 +23,28 @@ const todoReducer = (state = initialState, action) => {
     }
   }
  */
-const addTodoAction = {
-  reducer: (state, action) => {
-    const {id, text} = action.payload
-    state.push({id, text, complete: false})
-  },
-  prepare: (text)=>{
-    return {payload: {text, id: uuid}}
-  }
-}
-const toggleTodoAction = (state, action) => {
-  const todo = state.find(todo => todo.id === action.payload)
-  if(todo) todo.complete = !todo.complete
-}
-
 const todoSlice = createSlice({
   name: 'todos',
   initialState: [],
-  reducers : {addTodoAction, toggleTodoAction}
+  reducers : {
+    addTodo: (state, action) => {
+      const newTodo = {
+        id: uuid,
+        text: action.payload.text,
+        complete: false
+      }
+      state.push(newTodo)
+    }, 
+    toggleTodo: (state, action) => {
+      const todo = state.find(todo => todo.id === action.payload)
+      if(todo) todo.complete = !todo.complete
+    }, 
+    deleteTodo: (state, action) => {
+      return state.filter((todo) => todo.id !== action.payload.id)
+    }
+  }
 })
 
-export const { addTodo, toggleTodo } = todoSlice.actions
+export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions
 
 export default todoSlice.reducer

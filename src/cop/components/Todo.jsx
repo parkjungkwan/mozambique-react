@@ -1,17 +1,29 @@
-import PropTypes from 'prop-types'
+import React from 'react';
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../reducers/todo.reducer";
 
-const Todo = ( {onClick, complete, text} ) => (
-    <li 
-        onClick={onClick} 
-        style={{
-            textDecoration: complete ? 'line-shrough' : 'none'
-        }}> {text} </li>
-)
+const Todo = ({ id, text }) => {
 
-Todo.propTypes = {
-    onClick : PropTypes.func.isRequired,
-    complete : PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
-}
+	const dispatch = useDispatch();
 
-export default Todo
+	const onClick=()=>{
+		dispatch(
+			deleteTodo({
+				id: id
+			})
+		)
+	}
+
+	return (
+		<li className="task-item">
+			<div>
+				{text}
+			</div>
+			<div>
+				<button className="remove-task-button" onClick={onClick}>Delete</button>
+			</div>
+		</li>
+	);
+};
+
+export default Todo;
