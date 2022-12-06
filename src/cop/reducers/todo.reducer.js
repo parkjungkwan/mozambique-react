@@ -28,6 +28,7 @@ const todoSlice = createSlice({
   initialState: [],
   reducers : {
     addTodo: (state, action) => {
+      
       const newTodo = {
         id: uuid,
         text: action.payload.text,
@@ -40,6 +41,7 @@ const todoSlice = createSlice({
       if(todo) todo.complete = !todo.complete
     }, 
     deleteTodo: (state, action) => {
+      alert(`addTodo 입력값: ${JSON.stringify(action)}`)
       return state.filter((todo) => todo.id !== action.payload.id)
     }
   }

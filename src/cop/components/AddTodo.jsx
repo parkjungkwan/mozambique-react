@@ -11,8 +11,10 @@ const AddTodo = () => {
         e.preventDefault()
         if(!value.trim()) {
             alert('입력창이 비었습니다.')
+        }else{
+            alert(`입력값: ${value}`)
         }
-        dispatch(addTodo({todo: value}))
+        dispatch(addTodo({text: value}))
         setValue('')
     }
 

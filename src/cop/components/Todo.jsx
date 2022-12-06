@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../reducers/todo.reducer";
 
-const Todo = ({ id, text }) => {
+const Todo = ({ id, title }) => {
 
 	const dispatch = useDispatch();
 
@@ -16,12 +16,8 @@ const Todo = ({ id, text }) => {
 
 	return (
 		<li className="task-item">
-			<div>
-				{text}
-			</div>
-			<div>
+				{title}
 				<button className="remove-task-button" onClick={onClick}>Delete</button>
-			</div>
 		</li>
 	);
 };
