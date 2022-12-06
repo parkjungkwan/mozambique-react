@@ -1,3 +1,8 @@
-import { createStore } from 'redux'
-import todoReducer from './todo.reducer'
-export const store = createStore(todoReducer)
+import { combineReducers} from "@reduxjs/toolkit"
+import todoReducer from "cop/reducers/todo.reducer"
+import filterReducer from "cop/reducers/filter.reducer"
+
+export default combineReducers({
+    todos: todoReducer,
+    filters: filterReducer
+})

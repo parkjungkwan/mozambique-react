@@ -1,8 +1,8 @@
-import {TodoInput, TodoList} from "cop"
+import {AddTodo, TodoListComp} from "cop"
 const Schedule = () => {
     return <>
-        <TodoInput/>
-        <TodoList/>
+        <AddTodo/>
+        <TodoListComp/>
     </>
 }
 export default Schedule

@@ -1,3 +1,6 @@
+import { createSlice } from "@reduxjs/toolkit"
+import { v4 as uuid } from 'uuid'
+/**
 const initialState = {todos: [], todo: {}}
 
 export const addTodoAction = todo => ({type: "ADD_TODO", payload: todo})
@@ -19,4 +22,27 @@ const todoReducer = (state = initialState, action) => {
         return state
     }
   }
-export default todoReducer
+ */
+const addTodoAction = {
+  reducer: (state, action) => {
+    const {id, text} = action.payload
+    state.push({id, text, complete: false})
+  },
+  prepare: (text)=>{
+    return {payload: {text, id: uuid}}
+  }
+}
+const toggleTodoAction = (state, action) => {
+  const todo = state.find(todo => todo.id === action.payload)
+  if(todo) todo.complete = !todo.complete
+}
+
+const todoSlice = createSlice({
+  name: 'todos',
+  initialState: [],
+  reducers : {addTodoAction, toggleTodoAction}
+})
+
+export const { addTodo, toggleTodo } = todoSlice.actions
+
+export default todoSlice.reducer

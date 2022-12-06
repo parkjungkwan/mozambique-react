@@ -1,5 +1,7 @@
 // components
-export {default as TodoInput} from 'cop/components/TodoInput'
+export {default as Todo} from 'cop/components/Todo'
+export {default as AddTodo} from 'cop/components/AddTodo'
 export {default as TodoList} from 'cop/components/TodoList'
+export {default as TodoListComp} from 'cop/components/TodoListComp'
 // containers
 export {default as Schedule} from 'cop/containers/Schedule'
