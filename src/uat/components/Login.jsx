@@ -1,9 +1,9 @@
 import '../styles/Login.css'
 import { useState } from "react"
-import { loginApi } from '../api'
+import { blogLogin } from '../api'
 const Login = () => {
     const [inputs, setInputs] = useState({})
-    const {username, password} = inputs;
+    const {email, password} = inputs;
 
     const onChange = e => {
         e.preventDefault()
@@ -12,15 +12,23 @@ const Login = () => {
     }
     const onClick = e => {
         e.preventDefault()
-        const loginRequest = {username, password}
-        alert(`사용자 이름: ${JSON.stringify(loginRequest)}`)
-        loginApi(loginRequest)
+        const request = {email, password}
+        alert(`사용자 이름: ${JSON.stringify(request)}`)
+        blogLogin(request)
+        .then((res)=>{
+            console.log(`Response is ${res.config.data}`)
+            localStorage.setItem('token', JSON.stringify(res.config.data))
+        })
+        .catch((err)=>{
+            console.log(err)
+            alert('아이디와 비밀번호를 다시')
+        })
 
     }
 
     return (
     <>
-        USERNAME: <input type="text" name="username" onChange={onChange} /><br/>
+        EMAIL: <input type="text" name="email" onChange={onChange} /><br/>
         PASSWORD: <input type="text" name="password" onChange={onChange} /><br/>
         <button onClick={onClick}> 로그인 </button>
 
