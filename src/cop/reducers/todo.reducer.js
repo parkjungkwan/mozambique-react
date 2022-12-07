@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { v4 as uuid } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 /**
 const initialState = {todos: [], todo: {}}
 
@@ -28,25 +28,18 @@ const todoSlice = createSlice({
   initialState: [],
   reducers : {
     addTodo: (state, action) => {
-      
       const newTodo = {
-        id: uuid,
-        text: action.payload.text,
-        complete: false
+        id: uuidv4(),
+        text: action.payload.text
       }
       state.push(newTodo)
     }, 
-    toggleTodo: (state, action) => {
-      const todo = state.find(todo => todo.id === action.payload)
-      if(todo) todo.complete = !todo.complete
-    }, 
     deleteTodo: (state, action) => {
-      alert(`addTodo 입력값: ${JSON.stringify(action)}`)
       return state.filter((todo) => todo.id !== action.payload.id)
     }
   }
 })
 
-export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions
+export const { addTodo, deleteTodo } = todoSlice.actions
 
 export default todoSlice.reducer

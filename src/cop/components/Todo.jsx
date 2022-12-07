@@ -2,21 +2,16 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../reducers/todo.reducer";
 
-const Todo = ({ id, title }) => {
+const Todo = ({ id, text }) => {
 
 	const dispatch = useDispatch();
-
-	const onClick=()=>{
-		dispatch(
-			deleteTodo({
-				id: id
-			})
-		)
-	}
+	const onClick=e=>{
+		e.preventDefault()
+		dispatch(deleteTodo({id: id}))}
 
 	return (
 		<li className="task-item">
-				{title}
+				{id} | {text}
 				<button className="remove-task-button" onClick={onClick}>Delete</button>
 		</li>
 	);
