@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import {Navigation, Counter, Footer} from "cmm"
+import {Navigation2, Counter, Footer} from "cmm"
 import {Schedule} from "cop"
 import {LoginForm} from "uat"
 import image from '../../images/fashion.png'
@@ -10,7 +10,7 @@ const Home = () => {
         <thead>
             <tr columns="3" >
                 <td style={{ width: "100%", border: "1px solid black"}}>
-                    <Navigation/>
+                    <Navigation2/>
                 </td>
             </tr>
         </thead>
