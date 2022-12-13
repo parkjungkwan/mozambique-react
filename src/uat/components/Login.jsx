@@ -16,6 +16,7 @@ const Login = () => {
         alert(`사용자 이름: ${JSON.stringify(request)}`)
         blogLogin(request)
         .then((res)=>{
+            alert(`Response is ${res.config.data}`)
             console.log(`Response is ${res.config.data}`)
             localStorage.setItem('token', JSON.stringify(res.config.data))
         })
