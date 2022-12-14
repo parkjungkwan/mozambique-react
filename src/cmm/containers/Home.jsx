@@ -3,6 +3,7 @@ import {Navigation2, Counter, Footer} from "cmm"
 import {Schedule} from "cop"
 import {LoginForm} from "uat"
 import image from '../../images/fashion.png'
+import {Iris} from "iris"
 const Home = () => {
     const imageSize = {width: 700, height: 500}
     return (<>
@@ -21,6 +22,7 @@ const Home = () => {
                 <Route path="/counter" element={<Counter/>}></Route>
                 <Route path="/todos" element={<Schedule/>}></Route>
                 <Route path="/login" element={<LoginForm/>}></Route>
+                <Route path="/iris" element={<Iris/>}></Route>
             </Routes>
             </td>
         </tr>
